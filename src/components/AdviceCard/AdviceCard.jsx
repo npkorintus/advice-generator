@@ -14,10 +14,12 @@ const AdviceCard = () => {
   }, []);
 
   return (
-    adviceSlip ? <>
-      <div>"{adviceSlip.slip.advice}"</div>
-      <div>#{adviceSlip.slip.id}</div>
-    </> : <CircularProgress />
+    adviceSlip ? (
+      <div className='advice-card'>
+        <div>"{adviceSlip.slip.advice}"</div>
+        <div>#{adviceSlip.slip.id}</div>
+      </div>
+    ) : <CircularProgress />
   );
 };
 
