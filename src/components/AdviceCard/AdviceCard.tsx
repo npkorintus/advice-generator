@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react';
 
-import API from '../../api';
+import AdviceSlipData from '../../types/AdviceSlip';
+import AdviceSlipService from '../../services/AdviceService';
+
 import CircularProgress from '@mui/joy/CircularProgress';
 
-const AdviceCard = () => {
-  interface Slip {
-    advice: string;
-    id: number;
-  }
-  const [adviceSlip, setAdviceSlip] = useState<Slip>({ advice: '', id: 0 });
+const AdviceCard: React.FC = () => {
+  const initialAdviceCardState = {
+    slip: {
+      id: null,
+      advice: ''
+    }
+  };
+
+  const [adviceSlip, setAdviceSlip] = useState<AdviceSlipData>(initialAdviceCardState);
   const [loading, setLoading] = useState<boolean>(true);
-  // const [slip, setSlip] = useState<string>('');
-  // const [id, setId] = useState<number>(null);
 
   useEffect(() => {
-    API.get().then(response => {
+    AdviceSlipService.get().then(response => {
       console.log('response: ', response)
-      setAdviceSlip(response.data.slip);
+      const slip = response.data;
+      setAdviceSlip(slip);
       setLoading(false);
     })
   }, [loading]);
@@ -26,8 +30,8 @@ const AdviceCard = () => {
   return (
     loading ? <CircularProgress /> : (
       <div className='advice-card'>
-        <div>"{adviceSlip.advice}"</div>
-        <div>#{adviceSlip.id}</div>
+        <div>"{adviceSlip.slip.advice}"</div>
+        <div>#{adviceSlip.slip.id}</div>
       </div>
      )
   );
