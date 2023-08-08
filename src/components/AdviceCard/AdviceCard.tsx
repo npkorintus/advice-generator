@@ -29,9 +29,39 @@ const AdviceCard: React.FC = () => {
 
   return (
     loading ? <CircularProgress /> : (
-      <div className='advice-card'>
-        <div>"{adviceSlip.slip.advice}"</div>
-        <div>#{adviceSlip.slip.id}</div>
+      <div
+        className='advice-card'
+        style={{
+          // border: '1px solid black',
+          padding: '20px',
+          borderRadius: '12px',
+          background: 'hsl(217, 19%, 24%)'
+          // background: 'hsl(217, 19%, 38%)'
+        }}
+      >
+        <div style={{ color: 'hsl(150, 100%, 66%)' }}>Advice #{adviceSlip.slip.id}</div>
+        <div style={{ color: 'hsl(193, 38%, 86%)' }}>"{adviceSlip.slip.advice}"</div>
+        <div>
+          <img
+          src='../../../images/pattern-divider-mobile.svg'
+          style={{
+            marginTop: '20px'
+          }}
+          />
+        </div>
+        <div>
+          <span className='dot'
+            style={{
+              height: '50px',
+              width: '50px',
+              backgroundColor: 'hsl(150, 100%, 66%)',
+              borderRadius: '50%',
+              display: 'inline-block'
+            }}
+          >
+            <img src="../../../images/icon-dice.svg" />
+          </span>
+        </div>
       </div>
      )
   );
