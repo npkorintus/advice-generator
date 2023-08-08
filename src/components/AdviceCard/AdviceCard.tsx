@@ -39,27 +39,41 @@ const AdviceCard: React.FC = () => {
           // background: 'hsl(217, 19%, 38%)'
         }}
       >
-        <div style={{ color: 'hsl(150, 100%, 66%)' }}>Advice #{adviceSlip.slip.id}</div>
-        <div style={{ color: 'hsl(193, 38%, 86%)' }}>"{adviceSlip.slip.advice}"</div>
+        <div
+          style={{
+            color: 'hsl(150, 100%, 66%)',
+            textTransform: 'uppercase',
+            letterSpacing: '4px'
+          }}
+        >Advice #{adviceSlip.slip.id}</div>
+        <div
+          style={{
+            color: 'hsl(193, 38%, 86%)',
+            fontWeight: 800,
+            fontSize: '28px',
+            marginTop: '32px'
+          }}><q>{adviceSlip.slip.advice}</q></div>
         <div>
           <img
           src='../../../images/pattern-divider-mobile.svg'
           style={{
-            marginTop: '20px'
+            marginTop: '20px',
+            marginBottom: '20px'
           }}
           />
         </div>
-        <div>
+        <div style={{ height: '10px' }}>
           <span className='dot'
             style={{
-              height: '50px',
-              width: '50px',
+              height: '60px',
+              width: '60px',
               backgroundColor: 'hsl(150, 100%, 66%)',
               borderRadius: '50%',
-              display: 'inline-block'
+              display: 'inline-block',
+              transform: 'translateY(50px)'
             }}
           >
-            <img src="../../../images/icon-dice.svg" />
+            <img src="../../../images/icon-dice.svg" style={{ transform: 'translateY(16px)' }} />
           </span>
         </div>
       </div>
