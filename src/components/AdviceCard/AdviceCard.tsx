@@ -15,17 +15,27 @@ const AdviceCard: React.FC = () => {
 
   const [adviceSlip, setAdviceSlip] = useState<AdviceSlipData>(initialAdviceCardState);
   const [loading, setLoading] = useState<boolean>(true);
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  const mobile = width <= 375;
+
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
 
   useEffect(() => {
     AdviceSlipService.get().then(response => {
-      console.log('response: ', response)
       const slip = response.data;
       setAdviceSlip(slip);
       setLoading(false);
     })
   }, [loading]);
-
-  console.log('adviceSlip: ', adviceSlip)
 
   return (
     loading ? <CircularProgress /> : (
@@ -33,11 +43,11 @@ const AdviceCard: React.FC = () => {
         <div className='id'>Advice #{adviceSlip.slip.id}</div>
         <div className='advice'><q>{adviceSlip.slip.advice}</q></div>
         <div className='divider'>
-          <img src='../../../images/pattern-divider-mobile.svg' />
+          <img src={mobile ? '../../images/pattern-divider-mobile.svg' : '../../images/pattern-divider-desktop.svg'} />
         </div>
         <div className='dot-container'>
           <span className='dot'>
-            <img className='dice-img' src="../../../images/icon-dice.svg" />
+            <img className='dice-img' src={'../../images/icon-dice.svg'} />
           </span>
         </div>
       </div>
