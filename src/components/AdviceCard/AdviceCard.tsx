@@ -43,11 +43,11 @@ const AdviceCard: React.FC = () => {
         <div className='id'>Advice #{adviceSlip.slip.id}</div>
         <div className='advice'><q>{adviceSlip.slip.advice}</q></div>
         <div className='divider'>
-          <img src={mobile ? '../../images/pattern-divider-mobile.svg' : '../../images/pattern-divider-desktop.svg'} />
+          <img src={mobile ? '../../pattern-divider-mobile.svg' : '../../pattern-divider-desktop.svg'} />
         </div>
         <div className='dot-container'>
           <span className='dot'>
-            <img className='dice-img' src={'../../images/icon-dice.svg'} />
+            <img className='dice-img' src={'../../icon-dice.svg'} />
           </span>
         </div>
       </div>
